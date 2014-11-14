@@ -1,0 +1,7 @@
+grant codeBase "file:${catalina.home}/bin/tomcat-juli.jar" {
+  ...
+  // begin:libreplan
+  permission java.io.FilePermission "${catalina.base}${file.separator}webapps${file.separator}libreplan${file.separator}WEB-INF${file.separator}classes${file.separator}logging.properties", "read";
+  // end:libreplan
+  ...
+};
