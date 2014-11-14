@@ -1,0 +1,12 @@
+PELICAN_INPUT=/opt/pelican/content
+PELICAN_OUTPUT=/var/www/pelican
+PELICAN_SETTINGS=/opt/pelican/settings.py
+PELICAN_OPTS=
+
+# Fetch content if it is in a git repository
+if [ -d ${PELICAN_INPUT}/.git ]; then
+  git -C ${PELICAN_INPUT} pull
+fi
+
+pelican ${PELICAN_INPUT} -o ${PELICAN_OUTPUT} -s ${PELICAN_SETTINGS} ${PELICAN_OPTS}
+
