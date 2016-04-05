@@ -6,7 +6,7 @@ MAINTAINER Juan A. Suarez Romero <jasuarez@igalia.com>
 
 RUN apt-get update
 
-RUN apt-get -y install postgresql apache2 php5 php5-pgsql git supervisor
+RUN apt-get -y install postgresql apache2 php5 php5-pgsql supervisor
 
 ADD https://github.com/Igalia/phpreport/releases/download/2.16/phpreport_2.16.tar.gz /var/www/html/phpreport/
 
