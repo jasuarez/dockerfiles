@@ -1,0 +1,7 @@
+# -*- mode: python -*-
+
+moduleset = [ 'gnome-apps-3.22.modules ']
+modules = [ 'gtk+', 'adwaita-icon-theme', 'epiphany' ]
+
+checkoutroot = os.path.expanduser('~/gnome3/sources')
+prefix = os.path.expanduser('~/gnome3/install')
