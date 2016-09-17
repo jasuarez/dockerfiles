@@ -2,17 +2,19 @@ FROM fedora:rawhide
 
 MAINTAINER Juan A. Suarez Romero <jasuarez@igalia.com>
 
+ARG username=jasuarez
+
 RUN dnf -y install git sudo passwd vim
 
-RUN useradd -m jasuarez 
+RUN useradd -m ${username} 
 
-RUN usermod -G wheel jasuarez
+RUN usermod -G wheel ${username}
 
-RUN passwd jasuarez -d
+RUN passwd ${username} -d
 
-USER jasuarez
+USER ${username}
 
-WORKDIR /home/jasuarez
+WORKDIR /home/${username}
 
 RUN git clone https://github.com/jasuarez/bashrc.d.git ~/.bashrc.d
 
