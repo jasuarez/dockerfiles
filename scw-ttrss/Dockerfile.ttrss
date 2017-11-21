@@ -1,0 +1,13 @@
+FROM php:7-fpm-alpine
+
+ADD ttrss/ /ttrss
+
+ADD ttrss.config.php /ttrss/config.php
+
+ADD ttrss.configure-db.php /ttrss/configure-db.php
+
+RUN chmod -R 777 /ttrss/lock /ttrss/cache /ttrss/feed-icons
+
+VOLUME [ "/ttrss" ]
+
+ENTRYPOINT [ "echo", "Done"]

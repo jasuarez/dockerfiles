@@ -1,0 +1,74 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    depends_on:
+      - code
+      - db
+      - fpm
+      - feed_update
+    env_file: ttrss.env
+    networks:
+      - ttrss_backend
+      - ttrss_frontend
+    volumes:
+      - ttrss_code:/var/www/ttrss
+    links:
+      - fpm
+
+  code:
+    build:
+      context: .
+      dockerfile: Dockerfile.ttrss
+    volumes:
+      - ttrss_code:/ttrss
+      
+  fpm:
+    build:
+      context: .
+      dockerfile: Dockerfile.fpm
+    env_file: ttrss.env
+    networks:
+      - ttrss_backend
+    volumes:
+      - ttrss_code:/var/www/ttrss
+    links:
+      - db
+
+  feed_update:
+    build:
+      context: .
+      dockerfile: Dockerfile.fpm
+    entrypoint: [ "php", "/var/www/ttrss/update.php",  "--daemon", ">", "/dev/stdout" ]
+    user: "www-data"
+    env_file: ttrss.env
+    depends_on:
+      - db
+    networks:
+      - ttrss_backend
+    volumes:
+      - ttrss_code:/var/www/ttrss
+    links:
+      - db
+
+  db:
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: ttrss
+      POSTGRES_PASSWORD: ttrss
+    networks:
+      - ttrss_backend
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
+  ttrss_code:
+
+networks:
+  ttrss_frontend:
+    external: true
+  ttrss_backend:
