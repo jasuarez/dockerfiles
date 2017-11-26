@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  isso:
+    build: .
+    env_file: isso.env
+    networks:
+      - isso_frontend
+    volumes:
+      - isso_data:/isso
+
+volumes:
+  isso_data:
+
+networks:
+  isso_frontend:
+    external: true

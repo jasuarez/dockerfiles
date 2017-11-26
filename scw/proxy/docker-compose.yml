@@ -9,6 +9,7 @@ services:
       - 80:80
       - 443:443
     networks:
+      - isso_frontend
       - ttrss_frontend
     volumes:
       - certs:/etc/nginx/certs 
@@ -32,5 +33,7 @@ volumes:
   html:
 
 networks:
+  isso_frontend:
+    external: true
   ttrss_frontend:
     external: true
