@@ -1,0 +1,1 @@
+#command="nc -q0 localhost $SSH_ORIGINAL_COMMAND" <SSH PUBLIC KEY>

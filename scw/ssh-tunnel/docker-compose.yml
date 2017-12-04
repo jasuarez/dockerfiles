@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  tunnel:
+    build: .
+    ports:
+      - "2022:22"
+    volumes:
+      - tunnel_config:/etc/ssh
+      - ./sshd.conf:/etc/ssh/sshd_config
+      - ./client_authorized_keys:/home/client/.ssh/authorized_keys:ro
+      - ./server_authorized_keys:/home/server/.ssh/authorized_keys:ro
+
+volumes:
+  tunnel_config:
