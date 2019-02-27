@@ -1,12 +1,14 @@
 # Go to http://localhost/phpreport to use it (username: admin ; password = admin)
 
-FROM ubuntu:14.04
+FROM ubuntu:bionic
 
 MAINTAINER Juan A. Suarez Romero <jasuarez@igalia.com>
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update
 
-RUN apt-get -y install postgresql apache2 php5 php5-pgsql supervisor
+RUN apt-get -y install postgresql apache2 php php-pgsql supervisor
 
 ADD https://github.com/Igalia/phpreport/releases/download/2.18/phpreport_2.18.tar.gz /var/www/html/phpreport/
 
