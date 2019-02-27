@@ -8,11 +8,11 @@ RUN apt-get update
 
 RUN apt-get -y install postgresql apache2 php5 php5-pgsql supervisor
 
-ADD https://github.com/Igalia/phpreport/releases/download/2.16/phpreport_2.16.tar.gz /var/www/html/phpreport/
+ADD https://github.com/Igalia/phpreport/releases/download/2.18/phpreport_2.18.tar.gz /var/www/html/phpreport/
 
 WORKDIR  /var/www/html/phpreport/
 
-RUN tar -xvf phpreport_2.16.tar.gz
+RUN tar -xvf phpreport_2.18.tar.gz
 
 COPY resources/create_db.sql /tmp
 
