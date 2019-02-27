@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
 
-RUN apt-get -y install postgresql apache2 php php-pgsql supervisor
+RUN apt-get -y install postgresql apache2 php php-pgsql php-xml supervisor
 
 ADD https://github.com/Igalia/phpreport/releases/download/2.18/phpreport_2.18.tar.gz /var/www/html/phpreport/
 
