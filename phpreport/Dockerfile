@@ -36,6 +36,8 @@ RUN cp /var/www/html/phpreport/config/config.defaults /var/www/html/phpreport/co
 
 ADD resources/supervisord.conf /etc/supervisor/conf.d/
 
+VOLUME /var/lib/postgresql/
+
 EXPOSE 80
 
 CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
