@@ -1,0 +1,62 @@
+# -*- mode: python -*-
+
+# edit this file to match your settings and copy it to ~/.jhbuildrc
+
+# if you have a GNOME git account, uncomment this line
+# repos['git.gnome.org'] = 'ssh://user@git.gnome.org/git/'
+
+# what module set should be used.  The default at the moment is 'gnome-2.30',
+# but it can be any of the files in the modulesets directory, or even
+# the URL of a module set file on a web server.
+# moduleset = 'gnome-2.30'
+#moduleset = [ 'gnome-apps-3.28', 'other/wayland', os.path.expanduser('~/jhbuild/piglit-moduleset/piglit.modules') ]
+moduleset = [ os.path.expanduser('/opt/jhbuild/mesa-resources/jhbuild/graphics-mesa.modules') ]
+#moduleset = os.path.expanduser('~/.gladiator-jhbuild.modules')
+#use_local_modulesets = True
+
+# A list of the modules to build.  Defaults to the Gnome Desktop and
+# developer platform.
+#modules = [ 'meta-gnome-core' ]
+#modules = [ 'wayland-protocols', 'mesa', 'deqp', 'piglit', 'shader-db' ]
+modules = [ 'mesa' ]
+
+# Do not install dconf and use the system one
+# skip.append('dconf')
+
+# Skip these unavailable modules
+#skip.append('iptables')
+
+# what directory should the source be checked out to?
+checkoutroot = os.path.expanduser('/opt/jhbuild/sources')
+
+# the prefix to configure/install modules to (must have write access)
+prefix = os.path.expanduser('/opt/jhbuild/install')
+
+tarballdir = os.path.expanduser('/opt/jhbuild/downloads')
+buildroot = os.path.expanduser('/opt/jhbuild/build')
+
+# extra arguments to pass to all autogen.sh scripts
+# to speed up builds of gnome2, try '--disable-static --disable-gtk-doc'
+# it is also possible to set CFLAGS this way, 'CFLAGS="-g -O2"' for example
+#autogenargs=''
+os.environ['CFLAGS'] = '-g3 -O0'
+os.environ['CXXFLAGS'] = '-g3 -O0'
+autogenargs="--enable-debug --disable-static --disable-gtk-doc"
+#module_autogenargs['rygel'] = autogenargs + " --disable-tests --disable-valadoc"
+#module_autogenargs['tracker'] = autogenargs + " --disable-hal"
+#module_autogenargs['WebKit'] = "--disable-static --disable-gtk-doc"
+module_autogenargs['mesa'] = "--enable-dri3 --with-vulkan-drivers=intel --enable-debug"
+# On SMP systems you may use something like this to improve compilation time:
+# be aware that not all modules compile correctly with make -j2
+# You can also use 'make V=0' if you want less output while compiling.
+# makeargs = '-j 4'
+#use_local_modulesets = True
+try:
+    import multiprocessing
+    jobs = multiprocessing.cpu_count() + 1
+except ImportError as _e:
+    try:
+        jobs = os.sysconf('SC_NPROCESSORS_ONLN') + 1
+    except (OSError, AttributeError, ValueError):
+        jobs = 2
+
