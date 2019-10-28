@@ -12,7 +12,8 @@ RUN apt-get update                                                  \
            libxau-dev libpthread-stubs0-dev libwayland-dev          \
            llvm-8-dev libelf-dev bison flex libxext-dev             \
            libxdamage-dev libxxf86vm-dev libxrandr-dev gettext      \
-	   mesa-utils vulkan-tools ccache                           \
+           mesa-utils vulkan-tools ccache bash-completion           \
+           libwayland-egl-backend-dev cmake                         \
         && rm -fr /var/lib/apt/lists/*
 
 RUN addgroup --gid 1002 jasuarez                              \
