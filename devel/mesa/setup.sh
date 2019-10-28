@@ -23,6 +23,11 @@ if [ -d ~/.bashrc.d ]; then
 fi
 EOF
 
+# Store bash history externally so we have persistency
+touch /opt/jhbuild/bash_history
+ln -s /opt/jhbuild/bash_history ~/.bash_history
+echo "history -r" >> ~/.bashrc
+
 # JHBuild
 pip3 install ninja mako meson git-review
 git clone https://github.com/infapi00/mesa-resources /opt/jhbuild/mesa-resources
