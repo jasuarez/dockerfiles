@@ -2,7 +2,12 @@ version: "3"
 
 services:
   devel:
-    build: .
+    build:
+      context: .
+      args:
+        username: "jasuarez"
+        useruid: 1000
+        usergid: 1002
     stdin_open: true
     tty: true
     privileged: true

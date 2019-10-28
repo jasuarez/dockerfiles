@@ -1,5 +1,11 @@
 FROM debian:unstable
 
+ARG username
+
+ARG useruid
+
+ARG usergid
+
 ENV DEBIAN_FRONTEND noninteractive
 
 ENV SHELL /bin/bash
@@ -16,26 +22,26 @@ RUN apt-get update                                                  \
            libwayland-egl-backend-dev cmake                         \
         && rm -fr /var/lib/apt/lists/*
 
-RUN addgroup --gid 1002 jasuarez                              \
-        && adduser --gecos "" --uid 1000 --gid 1002 jasuarez  \
-        && passwd -d jasuarez                                 \
-        && adduser jasuarez sudo
+RUN addgroup --gid ${usergid} ${username}                                    \
+        && adduser --gecos "" --uid ${useruid} --gid ${usergid} ${username}  \
+        && passwd -d ${username}                                             \
+        && adduser ${username} sudo
 
 RUN mkdir -p /opt/jhbuild /opt/ccache
 
-ADD jhbuildrc /home/jasuarez/.jhbuildrc
+ADD jhbuildrc /home/${username}/.jhbuildrc
 
-ADD setup.sh /home/jasuarez
+ADD setup.sh /home/${username}
         
-RUN chown jasuarez:jasuarez       \
-        /opt/ccache               \
-        /opt/jhbuild              \
-        /home/jasuarez/.jhbuildrc \
-        /home/jasuarez/setup.sh
+RUN chown ${username}:${username}    \
+        /opt/ccache                  \
+        /opt/jhbuild                 \
+        /home/${username}/.jhbuildrc \
+        /home/${username}/setup.sh
 
-USER jasuarez
+USER ${username}
 
-WORKDIR /home/jasuarez
+WORKDIR /home/${username}
 
 RUN sh ./setup.sh            \
         && rm -f ./setup.sh
@@ -43,3 +49,4 @@ RUN sh ./setup.sh            \
 VOLUME [ "/opt/jhbuild", "/opt/ccache" ]
 
 CMD "/bin/bash"
+

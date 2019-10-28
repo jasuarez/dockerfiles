@@ -24,7 +24,7 @@ fi
 EOF
 
 # JHBuild
-pip3 install ninja mako meson
+pip3 install ninja mako meson git-review
 git clone https://github.com/infapi00/mesa-resources /opt/jhbuild/mesa-resources
 git clone https://gitlab.gnome.org/GNOME/jhbuild.git /opt/jhbuild/jhbuild
 cd /opt/jhbuild/jhbuild && ./autogen.sh && make install
