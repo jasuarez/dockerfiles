@@ -19,7 +19,7 @@ RUN apt-get update                                                  \
            llvm-8-dev libelf-dev bison flex libxext-dev             \
            libxdamage-dev libxxf86vm-dev libxrandr-dev gettext      \
            mesa-utils vulkan-tools ccache bash-completion           \
-           libwayland-egl-backend-dev cmake                         \
+           libwayland-egl-backend-dev cmake gdb                     \
         && rm -fr /var/lib/apt/lists/*
 
 RUN addgroup --gid ${usergid} ${username}                                    \
