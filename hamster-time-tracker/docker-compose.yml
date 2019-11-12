@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  hamster-time-tracker:
+    build:
+      context: .
+      args:
+        UID: ${UID}
+    environment:
+      DISPLAY: ${DISPLAY}
+    ports:
+      - "12434:12434"
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - hamster-time-tracker:/home/local
+
+volumes:
+  hamster-time-tracker:
+    external: true
