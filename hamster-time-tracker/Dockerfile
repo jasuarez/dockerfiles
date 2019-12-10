@@ -1,8 +1,8 @@
-FROM fedora:30
+FROM mageia:7
 
 ARG UID
 
-RUN dnf install -y hamster-time-tracker gtk3 dbus-x11 \
+RUN dnf install -y hamster-time-tracker \
         && dnf clean all
 
 RUN useradd --uid ${UID} local
