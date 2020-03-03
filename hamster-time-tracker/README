@@ -1,0 +1,31 @@
+# Hamster Time Tracker Container
+
+This creates a Docker container with Hamster Time Tracker service running, and
+exposing the D-Bus interface through TCP network.
+
+
+## Building
+
+`docker-compose` is used to build and start/stop the container. Before building,
+ensure the `UID` and `DISPLAY` environment variables are correctly exported.
+
+```
+export UID
+export DISPLAY
+docker-compose build
+```
+
+
+## Running
+
+For the first execution, a Docker volume must be created so data is stored
+persistently. This allow to update the container without loosing the data.
+
+```
+docker volume create hamster-time-tracker
+```
+
+From now on, start the container with `docker-compose up -d` and stop it with
+`docker-compose down`.
+
+The D-Bus service will be listening in `tcp:host=localhost,bind=*,port=12434`.
