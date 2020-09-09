@@ -13,7 +13,7 @@ ENV SHELL /bin/bash
 ENV CCACHE_DIR /opt/ccache/cache
 
 RUN apt-get update                                                  \
-        && apt-get -y install sudo git wget vim make python python3 \
+        && apt-get -y install sudo git wget vim make python3        \
            python3-pip libtool-bin pkg-config libpciaccess-dev      \
            libxau-dev libpthread-stubs0-dev libwayland-dev          \
            llvm-8-dev libelf-dev bison flex libxext-dev             \
