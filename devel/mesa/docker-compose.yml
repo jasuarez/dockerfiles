@@ -7,7 +7,7 @@ services:
       args:
         username: "jasuarez"
         useruid: 1000
-        usergid: 1002
+        usergid: 1000
     stdin_open: true
     tty: true
     privileged: true
