@@ -2,7 +2,7 @@
 set -e
 
 # Git
-wget https://raw.githubusercontent.com/jasuarez/dotfiles/master/.gitconfig -O ~/.gitconfig
+wget https://raw.githubusercontent.com/jasuarez/dotfiles/master/gitconfig -O ~/.gitconfig
 
 # Scripts
 git clone https://github.com/jasuarez/scripts.git ~/.local/bin
