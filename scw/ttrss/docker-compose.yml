@@ -55,7 +55,7 @@ services:
       - db
 
   db:
-    image: postgres:alpine
+    image: postgres:10-alpine
     environment:
       POSTGRES_USER: ttrss
       POSTGRES_PASSWORD: ttrss
