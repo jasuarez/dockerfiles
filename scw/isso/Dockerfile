@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN apk --no-cache add python2-dev py2-pip gcc libc-dev ca-certificates libffi-dev
+RUN apk --no-cache add python3-dev py3-pip py3-wheel gcc libc-dev ca-certificates libffi-dev
 
 RUN pip install isso gunicorn
 
