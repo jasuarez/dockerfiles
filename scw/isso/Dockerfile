@@ -2,7 +2,7 @@ FROM alpine
 
 RUN apk --no-cache add python3-dev py3-pip py3-wheel gcc libc-dev ca-certificates libffi-dev
 
-RUN pip install isso gunicorn
+RUN pip install isso gunicorn "werkzeug==0.9"
 
 ADD isso.cfg /etc
 
