@@ -2,4 +2,4 @@ FROM php:7-fpm-alpine
 
 RUN apk --no-cache add postgresql-dev icu-dev
 
-RUN docker-php-ext-install pgsql intl
+RUN docker-php-ext-install pgsql pdo_pgsql intl
