@@ -10,6 +10,7 @@ services:
       - 443:443
     networks:
       - isso_frontend
+      - plausible_frontend
       - ttrss_frontend
     volumes:
       - certs:/etc/nginx/certs 
@@ -34,6 +35,8 @@ volumes:
 
 networks:
   isso_frontend:
+    external: true
+  plausible_frontend:
     external: true
   ttrss_frontend:
     external: true
