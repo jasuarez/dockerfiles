@@ -10,6 +10,7 @@ flex
 freeglut3-dev
 g++
 gcc
+gdb
 git
 gperf
 libbz2-dev
@@ -46,6 +47,7 @@ python3-numpy
 python3-setuptools
 sudo
 tmux
+vim
 vulkan-tools
 wayland-protocols
 wget
