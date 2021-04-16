@@ -47,7 +47,7 @@ autogenargs="--enable-debug --disable-static --disable-gtk-doc"
 #module_autogenargs['tracker'] = autogenargs + " --disable-hal"
 #module_autogenargs['WebKit'] = "--disable-static --disable-gtk-doc"
 module_autogenargs['mesa'] = "--enable-dri3 --with-vulkan-drivers=intel --enable-debug"
-module_mesonargs['mesa'] = '-Dgallium-drivers=vc4,v3d,kmsro -Dplatforms=x11,drm -Dlibunwind=false -Dbuildtype=debug'
+module_mesonargs['mesa'] = '-Dgallium-drivers=vc4,v3d,kmsro,iris -Dvulkan-drivers=intel,broadcom -Dlibunwind=false -Dbuildtype=debug'
 # On SMP systems you may use something like this to improve compilation time:
 # be aware that not all modules compile correctly with make -j2
 # You can also use 'make V=0' if you want less output while compiling.
