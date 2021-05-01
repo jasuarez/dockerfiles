@@ -10,6 +10,7 @@ services:
       - 443:443
     networks:
       - isso_frontend
+      - matomo_frontend
       - ttrss_frontend
     volumes:
       - certs:/etc/nginx/certs 
@@ -35,5 +36,7 @@ volumes:
 networks:
   isso_frontend:
     external: true
-  ttrss_frontend:
+  matomo_frontend:
+    external: true
+  isso_frontend:
     external: true

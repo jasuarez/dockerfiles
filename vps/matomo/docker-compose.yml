@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  db:
+    image: mariadb:10.5
+    command: --max-allowed-packet=64MB
+    restart: always
+    volumes:
+      - db:/var/lib/mysql
+    env_file:
+      - ./db.env
+    networks:
+      - matomo_backend
+
+  app:
+    image: matomo:4.2-fpm-alpine
+    restart: always
+    links:
+      - db
+    volumes:
+      - matomo:/var/www/html
+    environment:
+      - MATOMO_DATABASE_HOST=db
+    env_file:
+      - ./db.env
+    networks:
+      - matomo_backend
+
+  web:
+    image: nginx:alpine
+    restart: always
+    volumes:
+      - matomo:/var/www/html:ro
+      # see https://github.com/matomo-org/matomo-nginx
+      - ./matomo.conf:/etc/nginx/conf.d/default.conf:ro
+    env_file:
+      - matomo.env
+    networks:
+      - matomo_backend
+      - matomo_frontend
+
+volumes:
+  db:
+  matomo:
+
+networks:
+  matomo_frontend:
+     external: true
+  matomo_backend:
