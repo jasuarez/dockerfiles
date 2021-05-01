@@ -38,5 +38,5 @@ networks:
     external: true
   matomo_frontend:
     external: true
-  isso_frontend:
+  ttrss_frontend:
     external: true
