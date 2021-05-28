@@ -6,7 +6,7 @@ RUN pip install isso gunicorn "werkzeug==0.9"
 
 ADD isso.cfg /etc
 
-VOLUME [ '/isso' ]
+VOLUME [ "/isso" ]
 
 EXPOSE 80
 
