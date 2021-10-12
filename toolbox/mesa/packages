@@ -15,6 +15,7 @@ gcc
 gcc-arm-linux-gnueabihf
 gdb
 git
+glslang-tools
 gperf
 kmod
 libbz2-dev
