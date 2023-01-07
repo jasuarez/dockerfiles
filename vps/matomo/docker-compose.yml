@@ -13,7 +13,7 @@ services:
       - matomo_backend
 
   app:
-    image: matomo:4.2-fpm-alpine
+    image: matomo:4.13-fpm-alpine
     restart: always
     links:
       - db
