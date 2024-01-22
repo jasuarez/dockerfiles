@@ -16,9 +16,11 @@ services:
       - plausible_backend
 
   plausible_events_db:
-    image: yandex/clickhouse-server:latest
+    image: yandex/clickhouse-server:21.3.2.5
     volumes:
       - event-data:/var/lib/clickhouse
+      - ./clickhouse-config.xml:/etc/clickhouse-server/config.d/logging.xml:ro
+      - ./clickhouse-user-config.xml:/etc/clickhouse-server/users.d/logging.xml:ro
     ulimits:
       nofile:
         soft: 262144
