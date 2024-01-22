@@ -11,7 +11,6 @@ services:
     networks:
       - isso_frontend
       - matomo_frontend
-      - ttrss_frontend
     volumes:
       - certs:/etc/nginx/certs 
       - vhost:/etc/nginx/vhost.d
@@ -37,6 +36,4 @@ networks:
   isso_frontend:
     external: true
   matomo_frontend:
-    external: true
-  ttrss_frontend:
     external: true
