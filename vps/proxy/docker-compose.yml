@@ -11,6 +11,7 @@ services:
     networks:
       - isso_frontend
       - matomo_frontend
+      - radicale_frontend
     volumes:
       - certs:/etc/nginx/certs 
       - vhost:/etc/nginx/vhost.d
@@ -36,4 +37,6 @@ networks:
   isso_frontend:
     external: true
   matomo_frontend:
+    external: true
+  radicale_frontend:
     external: true
