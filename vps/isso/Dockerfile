@@ -4,7 +4,7 @@ RUN apk --no-cache add python3-dev py3-pip py3-wheel gcc libc-dev ca-certificate
 
 RUN python3 -m venv /opt/venv
 
-RUN source /opt/venv/bin/activate && pip install isso gunicorn werkzeug
+RUN source /opt/venv/bin/activate && pip install isso gunicorn werkzeug setuptools
 
 ADD isso.cfg /etc
 
