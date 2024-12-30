@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   proxy:
     image: jwilder/nginx-proxy:alpine

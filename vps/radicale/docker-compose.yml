@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   radicale:
     image: tomsquest/docker-radicale:latest
