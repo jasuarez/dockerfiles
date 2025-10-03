@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 LABEL com.github.containers.toolbox="true"  \
       com.github.debarshiray.toolbox="true" \
@@ -10,7 +10,7 @@ RUN cat /packages | DEBIAN_FRONTEND=noninteractive xargs apt -yq install
 RUN apt clean
 RUN rm /packages
 
-RUN apt-file update
+RUN userdel -r ubuntu
 
 ENV CONTAINER_NAME mesa
 
